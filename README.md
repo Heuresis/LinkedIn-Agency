@@ -11,55 +11,88 @@
 
 <h1>LinkedIn Agency</h1>
 
-<p><strong>A team of agents running your LinkedIn agency.</strong></p>
+<p><strong>Your B2B LinkedIn agency, encoded.</strong></p>
 
 <p>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.0.0-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="Version"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.0.0-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="Version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="License"></a>
+  <a href="https://heuresis.ai"><img src="https://img.shields.io/badge/a-Heuresis%20workspace-b45309?style=flat-square&labelColor=09090b&color=b45309" alt="Heuresis"></a>
 </p>
 
 </div>
 
 <br/>
 
-> **The agent is thin. The workspace is smart. The workspace IS the product.**
+<img alt="LinkedIn Agency workspace — ghostwriting live, voice-drift signals, agents working" src="docs/assets/hero-workspace.png" width="100%">
 
-A team of AI agents running every department of a B2B LinkedIn agency — content, outbound DMs, sales, fulfillment, and a high-ticket education program. Each agent carries *your* judgement. Your ghostwriting voice. Your DM intent classification. Your client qualification bar.
+<p align="center"><em>Your LinkedIn agency, in one folder.</em></p>
 
-Not workflow automation. Encoded intent. The agents don't just follow rules — they make decisions the way you would, read signals the way you read them, and get sharper every cycle.
+<br/>
 
-You stay in the loop where your judgement counts. The rest runs while you sleep.
+---
+
+## What is this?
+
+Think of it like this: a B2B LinkedIn agency has departments — voice extraction, content engine, outbound DMs, fulfillment, and a high-ticket program for the founders who outgrow the retainer. Each one has standards, scripts, and instincts the founder carries in their head.
+
+**LinkedIn Agency is that whole org chart, written down as a folder of plain markdown files.**
+
+Open the folder. Hand it to any AI agent — Claude, ChatGPT, Cursor, OpenClaw. The agent reads `SYSTEM.md`, learns your agency, learns your client, and starts running a department.
+
+You stay in the loop where your judgement counts. Voice drift gets caught the week it starts, not the month after a client churns.
+
+| Step | What happens |
+|---|---|
+| **01** | Clone the folder |
+| **02** | Fill in `company.yaml` with your agency — voice patterns, ICP, retainer offer, program offer |
+| **03** | Hand the folder to any agent. It reads `SYSTEM.md`, becomes a LinkedIn agency operator, and starts shipping |
+
+<br/>
+
+---
+
+## Without this · With this
+
+| Without | With |
+|---|---|
+| The ghostwriter quits at month 6. Client posts go off-voice for two weeks before anyone notices. | Voice is encoded per client. Every post passes a drift check before it ships. |
+| The DM operator drifts off-script by month 3. Inbound replies get classified by gut feel. | A 4-class intent taxonomy routes every reply. Booking-gate qualification runs every day. |
+| Client-of-the-month posts read like last month's client. | Every client has their own voice profile, their own hook library, their own posting calendar. |
+| You spend Sundays writing your own LinkedIn while writing your clients' too. | Your founder posts and your client posts are different files. Both stay in your voice. |
+| The high-ticket program runs on Slack, Notion, three Loom videos, and hope. | Curriculum, cohort cadence, first-win triggers, and retention pulses live in the same workspace. |
+
+<br/>
+
+---
 
 ## Try it
 
-1. Clone:
+```bash
+git clone https://github.com/Heuresis/LinkedIn-Agency.git your-agency
+cd your-agency
+```
 
-   ```bash
-   git clone https://github.com/Heuresis/LinkedIn-Agency.git
-   ```
+Fill in `company.yaml` with your agency context. Then ask for what you need:
 
-2. Fill in `company.yaml` with your business context.
+```
+/extract-founder-voice         a voice profile (yours or a client's)
+/build-icp                     an ideal customer profile
+/design-retainer-offer         a DFY service offer document
+/design-program-offer          a high-ticket program offer document
+/build-content-engine          pillars, hook library, calendar
+/build-outbound-engine         DM intent taxonomy + per-class sequences
+/ghostwrite-client-post        a client-bound post (with voice-drift check)
+/run-client-dm-ops             a daily client DM operations cycle
+/voice-drift-detector          a weekly per-client voice audit
+```
 
-3. Ask for what you need:
+Works with Claude, ChatGPT, Cursor, OpenClaw — anything that reads files.
 
-   ```
-   /extract-founder-voice         a voice profile (yours or a client's)
-   /build-icp                     an ideal customer profile
-   /design-retainer-offer         a DFY service offer document
-   /design-program-offer          a high-ticket program offer document
-   /build-content-engine          pillars, hook library, calendar
-   /build-outbound-engine         DM intent taxonomy + per-class sequences
-   /write-linkedin-post           a founder post or ghostwritten client post
-   /write-dm-sequence             cold / warm / liked-post / comment-for-magnet
-   /build-application             a qualifying application
-   /build-call-prep               a discovery call prep doc
-   /run-client-dm-ops             a daily client DM operations cycle
-   /voice-drift-detector          a weekly per-client voice audit
-   ```
+Full setup walkthrough: **[Quickstart](docs/QUICKSTART.md)** · 30 minutes.
 
-Works with Claude, ChatGPT, Cursor, or any AI tool that reads files.
+<br/>
 
-Full setup: **[Quickstart](docs/QUICKSTART.md)** · 30 minutes.
+---
 
 ## What's inside the folder
 
@@ -70,9 +103,9 @@ linkedin-agency/
 ├── SYSTEM.md            ←  boot file · any AI becomes a LinkedIn agency operator
 ├── INVARIANTS.md        ←  14 NEVERs + 14 ALWAYSes (sacred rules)
 ├── ENCODING.md          ←  6-profile schema (recursive: agency + per-client)
-├── company.yaml         ←  YOUR business · fill once
+├── company.yaml         ←  YOUR agency · fill once
 │
-├── agents/              ←  AI specialists, one per role
+├── agents/              ←  32 specialists · an org chart of a real agency
 │      agency-director              top orchestrator
 │      foundations-head             voice · ICP · positioning · offer
 │      marketing-head               content engine · ghostwriting · virality
@@ -80,7 +113,7 @@ linkedin-agency/
 │      fulfillment-head             DFY delivery · voice-drift audit · client reports
 │      program-head                 curriculum · cohort cadence · student success
 │
-├── skills/              ←  ~30 capabilities · each produces one asset
+├── skills/              ←  30 capabilities · each produces one asset
 │   │
 │   │   FOUNDATIONS
 │   ├── /extract-founder-voice       Voice profile (yours or a client's)
@@ -136,6 +169,10 @@ linkedin-agency/
 
 Each file is plain text. Each folder is owned by you. Nothing is locked behind an app.
 
+<br/>
+
+---
+
 ## Each client ships with
 
 - **Voice profile** — extracted in week 1, ship-grade
@@ -148,7 +185,11 @@ Each file is plain text. Each folder is owned by you. Nothing is locked behind a
 - **Monthly report** — signal-dense, attribution-clean
 - **Voice-drift audit** — weekly per client
 
-Every action leaves a receipt. Every variant tracks its own conversion. Every winner gets promoted. Every paused variant tells you why.
+Every action leaves a receipt. Every post passes the drift check. Every client retains a profile that gets sharper every cycle.
+
+<br/>
+
+---
 
 ## Runs while you sleep
 
@@ -162,9 +203,13 @@ Wire the workspace into a runtime with **cron, webhook, and event triggers**. Th
 
 Triggers are declared in [`paperclip.manifest.yaml`](paperclip.manifest.yaml). Wire them to your scheduler and the workspace operates as a 24/7 LinkedIn agency.
 
+<br/>
+
+---
+
 ## What you get
 
-**5 agent-first departments. Specialist agents. ~30 skills.**
+**5 agent-first departments. 32 agents. 30 skills.**
 
 - **Foundations** — voice extraction · ICP build · positioning · offer architecture
 - **Marketing** — content engine · hook library · per-client ghostwriting · cross-platform repurposing
@@ -172,7 +217,11 @@ Triggers are declared in [`paperclip.manifest.yaml`](paperclip.manifest.yaml). W
 - **Fulfillment** — account management · ghostwriting protocol · client DM ops · lead-list sourcing · monthly reporting · voice-drift detection
 - **Program** — curriculum design · mentorship cadence · community rituals · first-win engineering · retention pulse
 
-Each department is not a set of rules. Each is a full department rebuilt as agent-first — agents that carry your intent, read signals, and make decisions.
+Each department is a full department rebuilt as agent-first — agents that carry your judgement, read signals, and make decisions.
+
+<br/>
+
+---
 
 ## Runs in any compatible agent runtime
 
@@ -186,15 +235,25 @@ The workspace is files. Files run anywhere that reads files.
 
 Runtime-swappable. Your workspace is the asset. The runtime is replaceable.
 
+<br/>
+
+---
+
 ## Why this matters
 
-Every founder-led LinkedIn agency hits the same wall: the founder IS every department. The ghostwriter quits at month 6. The DM operator drifts off-script by month 3. Client-of-the-month posts read as last month's client.
+Every founder-led LinkedIn agency hits the same wall: the founder IS every department.
 
-Encoding changes the shape of the week. Your judgement — voice extraction, ICP build, DM intent classification, ghostwriting standards — gets written into agents that run each department on your judgement. The founder stays. The judgement scales. The agency compounds.
+The ghostwriter quits at month 6. The DM operator drifts off-script by month 3. Client-of-the-month posts read like last month's client. The high-ticket program runs on Slack, Notion, three Loom videos, and hope.
 
-Every cycle, each department runs it gets sharper. The gap between your agency and every competitor operating off memory widens.
+Encoding changes the shape of the week. Your judgement — voice extraction, ICP build, DM intent classification, ghostwriting standards — gets written into agents that run each department on your behalf. The founder stays. The judgement scales. The agency compounds.
+
+Every cycle, each department gets sharper. The gap between your agency and every competitor operating off memory widens.
 
 This is one template in the library. More shipping, vertical by vertical. Every outcome claim we publish traces to a real deployment with a real operator. Thesis, method, and source go public on ideas. Receipts wait their turn.
+
+<br/>
+
+---
 
 ## Documentation
 
