@@ -14,7 +14,7 @@
 <p><strong>A team of agents running your LinkedIn agency.</strong></p>
 
 <p>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.0.0-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="Version"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-2.0.0-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="Version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="License"></a>
 </p>
 
