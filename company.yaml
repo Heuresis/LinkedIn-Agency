@@ -1,0 +1,361 @@
+# company.yaml — Operator Context Values
+#
+# This file holds the actual values for one specific operator. The schema is in ENCODING.md.
+# The boot sequence reads ENCODING.md to know the schema, then reads this file to load values,
+# then computes profile completeness scores to determine which skills are unlocked.
+#
+# Recursive structure: agency-level fields + per-client subprofiles.
+# Edit this file with the operator. Do not invent values. Empty fields refuse to unlock dependent skills.
+#
+# Version: 1.0.0 (template — operator fills in)
+
+# ====================================================================
+# PROFILE 1 — BUSINESS CONTEXT
+# ====================================================================
+
+business_context:
+  basic_info:
+    agency_name: ""                    # The operator's agency brand
+    operator_name: ""                  # The agency owner / founder (private; never in client artifacts)
+    website_url: ""
+    industry_focus: ""                 # B2B Marketing | Lead Gen | Personal Brand | Vertical-specific
+    business_model: ""                 # Hybrid (DFY + Program) | DFY-only | Program-only
+    revenue_tier: ""                   # pre-revenue | $10K-$50K/mo | $50K-$250K/mo | $250K-$1M/mo | $1M+/mo
+    years_active: 0
+    team_size: 0
+
+  positioning:
+    mission_statement: ""              # One sentence. What this agency exists to do.
+    vision_statement: ""               # One sentence. What world this agency is building toward.
+    core_values: []                    # 4-6 values, specific
+    unique_selling_proposition: ""     # The one-sentence USP
+    competitive_advantages: []         # 5-7 specific advantages, each tied to evidence
+    category_positioning: ""           # The category this agency owns
+
+  market_position:
+    target_markets: []
+    customer_segments: []
+    competitors:
+      # Use methodology descriptors only, never real competitor names
+      # - name_descriptor: "the volume-first DM agency"
+      #   what_they_do: "..."
+      #   how_we_differ: "..."
+
+  partnerships_distribution:
+    key_partnerships: []
+    distribution_channels: []          # LinkedIn organic | YouTube | DM outreach | Referral | Speaking | Podcast
+    referral_engine: ""
+
+  operations:
+    tech_stack:
+      crm: ""                          # GoHighLevel | HubSpot | Close | Notion | Custom
+      sales_navigator_tier: ""         # Free | Premium | Sales Navigator | Recruiter
+      dm_automation: ""                # ManyChat | LinkedHelper | Heyreach | None
+      booking: ""                      # Calendly | Savvycal | Cron
+      client_communication: ""         # Slack | Loom | Voxer | WhatsApp
+      content_scheduling: ""           # Taplio | Buffer | Native LinkedIn | Notion
+      docs_sops: ""                    # Notion | Slite | Coda
+      training_delivery: ""            # Loom | Skool | Circle | Custom
+      payment: ""                      # Stripe | PayPal | Custom
+      analytics: []
+    team_structure:
+      roles: []
+      responsibilities: {}
+      hiring_pipeline_status: ""
+
+  health_signals:
+    current_challenges: []             # 3-5 honest pressure points
+    short_term_goals: []               # Next 90 days
+    long_term_goals: []                # Next 12-24 months
+    key_metrics:
+      # - metric_name: "qualified_dm_replies_per_week"
+      #   current_value: ""
+      #   target_value: ""
+
+  brand_assets:
+    logo_descriptor: ""
+    typography: ""
+    color_palette: ""
+    voice_guidelines_summary: ""
+
+# ====================================================================
+# PROFILE 2 — BRAND VOICE (recursive: agency + per client)
+# ====================================================================
+
+brand_voice:
+  agency_voice:
+    communication_style: ""            # direct / consultative / contrarian / technical / storytelling
+    tone_framework:
+      primary: ""                      # e.g. "blunt-warm"
+      secondary: ""                    # e.g. "anti-establishment-with-proof"
+    personality_traits: []
+    language_patterns: []
+    phrases_to_use: []                 # Verbatim phrases the operator uses
+    phrases_to_avoid: []
+    persuasion_style: ""               # authority-by-proof / story-first / mechanism-first / contrarian-provocation
+    authority_positioning: ""          # Category-king / challenger / insider / outsider-with-edge
+    story_bank: []
+      # - story_slug: "founding-moment"
+      #   story_type: "Origin"
+      #   emotional_arc: "..."
+      #   key_lessons: []
+      #   proof_anchors: []
+
+  client_voices: []
+    # Per-active-client. Add one entry per active client.
+    # - client_slug: "acme"             # Internal anonymized slug. Never a real name.
+    #   vertical: "B2B SaaS"
+    #   role: "Founder"
+    #   voice_extraction_status: "interview-pending"
+    #   communication_style: ""
+    #   tone_framework: {}
+    #   personality_traits: []
+    #   language_patterns: []
+    #   phrases_to_use: []
+    #   phrases_to_avoid: []
+    #   pet_peeves: []                  # What this client refuses to sound like
+    #   story_bank: []
+    #   voice_drift_threshold: 0.82
+    #   last_drift_audit_date: ""
+    #   last_drift_audit_score: null
+
+# ====================================================================
+# PROFILE 3 — IDEAL CUSTOMER PROFILE (recursive: agency + per client)
+# ====================================================================
+
+ideal_customer_profile:
+  agency_icp:
+    demographics:
+      age_range: ""
+      gender_split: ""
+      geography: []
+      income_range: ""
+      education: ""
+    firmographics:
+      role: ""                         # Founder | CEO | Sales Leader | Marketing Leader | Head of Demand Gen
+      company_stage: ""                # Solo | 2-10 | 11-50 | 50+
+      revenue_stage: ""                # <$1M | $1M-$10M | $10M-$50M | $50M+
+      industry: []
+      sales_motion: ""                 # Self-serve | Inside sales | Outbound-led | Channel
+    psychographics:
+      pain_points: []                  # 7-12 specific pains in verbatim ICP language
+      desires: []                      # 7-12 outcomes
+      fears: []
+      aspirations: []
+      beliefs: []
+      objections: []                   # min 12
+    behavioral_patterns:
+      buying_triggers: []
+      decision_making_process: ""      # Solo | partner-consult | board-approval | committee
+      research_behavior: []
+      trust_signals_required: []
+    market_sophistication:
+      awareness_level: ""              # Most LinkedIn-services leads land at Solution-aware / Product-aware
+      solution_awareness: ""           # Naive | Aware | Skeptical | Exhausted (current state of LinkedIn-services market)
+      market_maturity: ""              # Mature
+      competitive_density: ""          # High
+    voice_of_customer:
+      actual_customer_language: []     # Verbatim from sales calls, DMs, applications
+      pain_language_patterns: []
+      desire_language_patterns: []
+      objection_patterns: []
+    limiting_belief_diagnosis:
+      dominant_belief: ""              # Helpless | Hopeless | Worthless
+
+  client_icps: []
+    # Per-active-client. Add one entry per active client.
+    # - client_slug: "acme"
+    #   vertical: "B2B SaaS"
+    #   icp_status: "extraction-pending"
+    #   demographics: {}
+    #   firmographics: {}
+    #   psychographics: {}
+    #   behavioral_patterns: {}
+    #   market_sophistication: {}
+    #   voice_of_customer: {}
+    #   limiting_belief_diagnosis: {}
+    #   content_resonance_evidence: []
+    #   dm_reply_evidence: []
+
+# ====================================================================
+# PROFILE 4 — CONTENT STRATEGY (recursive: agency + per client)
+# ====================================================================
+
+content_strategy:
+  agency_content:
+    content_pillars: []
+      # - pillar_name: ""
+      #   pillar_objective: ""
+      #   topic_clusters: []
+      #   conversion_bridge: ""
+      #   evidence_of_resonance: []
+    post_types: []
+      # - post_type_name: "Authority post"
+      #   purpose: ""
+      #   structure: ""
+      #   when_to_use: ""
+      #   examples_path: "reference/swipe-file/posts-linkedin/authority/"
+    hook_library:
+      hook_taxonomy_path: "reference/frameworks/content/hook-anatomy.md"
+      proven_hooks: []
+      banned_hooks: []
+    posting_cadence:
+      frequency: ""                    # 5x/week | daily | 2x/day
+      time_blocks: []                  # ["Tuesday 9am ET", "Thursday 11am ET", ...]
+      batching_protocol: ""            # Sunday-batch-week | Daily-spike | Mixed
+    virality_engine:
+      virality_engine_path: "reference/frameworks/content/virality-engine.md"
+      target_metric: ""                # 100K impressions/post target | 10K min | etc
+      viral_post_anatomy: ""
+
+  client_content: []
+    # Per-active-client. Add one entry per active client.
+    # - client_slug: "acme"
+    #   content_pillars: []
+    #   post_types: []
+    #   hook_library:
+    #     proven_hooks: []
+    #     banned_hooks: []
+    #   posting_cadence: {}
+    #   virality_engine: {}
+    #   ghostwriter_assigned: ""
+    #   voice_drift_threshold: 0.82
+    #   content_sourcing_protocol: ""
+
+# ====================================================================
+# PROFILE 5 — CASE STUDIES & CLIENT RESULTS
+# ====================================================================
+
+case_studies:
+  agency_case_studies: []
+    # Anonymized client transformations the agency uses as proof
+    # - client_slug: "acme"            # Anonymized internal slug
+    #   vertical: "B2B SaaS"
+    #   starting_state:
+    #     followers: 0
+    #     avg_post_impressions: 0
+    #     inbound_calls_per_month: 0
+    #     outbound_meetings_per_month: 0
+    #     revenue_from_linkedin: 0
+    #   ending_state:
+    #     followers: 0
+    #     avg_post_impressions: 0
+    #     inbound_calls_per_month: 0
+    #     outbound_meetings_per_month: 0
+    #     revenue_from_linkedin: 0
+    #   time_horizon_months: 0
+    #   key_unlocks: []
+    #   transformation_language: []
+    #   proof_assets: []               # Paths to screenshots / videos
+    #   use_in_sales: false
+    #   use_in_content: false
+
+  program_case_studies: []
+    # - student_slug: ""
+    #   starting_state:
+    #     agency_revenue_monthly: 0
+    #     client_count: 0
+    #     time_per_client_per_week_hours: 0
+    #   ending_state:
+    #     agency_revenue_monthly: 0
+    #     client_count: 0
+    #     time_per_client_per_week_hours: 0
+    #   time_horizon_months: 0
+    #   key_unlocks: []
+    #   transformation_language: []
+    #   proof_assets: []
+
+  proof_asset_inventory:
+    screenshots: 0
+    video_testimonials: 0
+    written_testimonials: 0
+    metric_dashboards: 0
+    before_after_comparisons: 0
+
+# ====================================================================
+# PROFILE 6 — PRODUCT STRATEGY
+# ====================================================================
+
+product_strategy:
+  service_tier:
+    offers: []
+      # - offer_slug: "dfy-content-dm"
+      #   offer_name: "DFY LinkedIn Content + DM Operations"
+      #   offer_type: "DFY content + DM"
+      #   price_point_monthly: 8000
+      #   contract_term_months: 6
+      #   positioning: ""
+      #   core_promise: ""
+      #   unique_mechanism: ""
+      #   deliverables_per_month:
+      #     - deliverable_name: "LinkedIn posts"
+      #       volume: "20"
+      #       quality_bar: ""
+      #     - deliverable_name: "Personalized DMs"
+      #       volume: "300"
+      #       quality_bar: ""
+      #     - deliverable_name: "Monthly client report"
+      #       volume: "1"
+      #       quality_bar: ""
+      #   scope_guardrails: []
+      #   value_stack: []
+      #   bonuses: []
+      #   guarantee: ""
+      #   target_avatar: ""
+      #   onboarding_protocol_path: ""
+
+  program_tier:
+    offers: []
+      # - offer_slug: "operator-academy"
+      #   offer_name: ""
+      #   offer_type: "1:1 mentorship | Group cohort"
+      #   price_point: 0
+      #   payment_options: []
+      #   program_length_months: 0
+      #   positioning: ""
+      #   core_promise: ""
+      #   unique_mechanism: ""
+      #   curriculum: []
+      #   cadence:
+      #     mentorship_calls_per_month: 0
+      #     group_calls_per_month: 0
+      #     office_hours: ""
+      #     community_engagement: ""
+      #   success_metrics: []
+      #   guarantee: ""
+      #   target_avatar: ""
+
+  offer_ladder:
+    free: []                           # Lead magnets, content, freebies
+    low_ticket: []                     # $7-$97 (often empty)
+    mid_ticket: []                     # $300-$2K
+    high_ticket: []                    # $5K-$25K
+    custom: []                         # Enterprise / white-label
+
+  pricing_psychology:
+    pricing_strategy: ""               # Identity-aligned / value-based / outcome-anchored / cohort-anchored
+    payment_options: []
+    comparison_anchoring: ""
+    value_justification: ""
+
+  economics_validation:
+    ltv_per_dfy_client: 0
+    cac_per_dfy_client: 0
+    ltv_cac_ratio_dfy: 0.0             # Target ≥ 3.0
+    gross_margin_pct_dfy: 0.0          # Target ≥ 60%
+    ltv_per_program_student: 0
+    cac_per_program_student: 0
+    breakeven_per_cohort_months: 0.0
+
+# ====================================================================
+# WORKSPACE METADATA
+# ====================================================================
+
+workspace_metadata:
+  template_version: "1.0.0"
+  template_name: "linkedin-marketing-agency"
+  encoded_by: "Heuresis"
+  encoding_date: "2026-05-03"
+  cycle_number: 0                      # Increments each completion of an encoding cycle
+  invariants_overrides: []             # Edge-case overrides, with operator sign-off
+  active_client_slugs: []              # List of active client_slug values used in recursive subprofiles

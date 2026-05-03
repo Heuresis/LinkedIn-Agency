@@ -1,0 +1,248 @@
+# paperclip.manifest.yaml — Runtime triggers and bindings
+#
+# Declares cron, webhook, and event triggers that wire this workspace into
+# any compatible agent runtime (Paperclip, Claude Agent SDK, BusinessOS, or any
+# HTTP orchestrator that speaks OpenAPI).
+#
+# The triggers fire skills with the right context loaded. Skills produce artifacts.
+# Artifacts log to outputs/. The cycle compounds.
+
+workspace:
+  name: linkedin-marketing-agency
+  template_version: 1.0.0
+  brand: heuresis
+  protocol: workspace-protocol/1.0
+  identity_file: SYSTEM.md
+  schema_file: ENCODING.md
+  invariants_file: INVARIANTS.md
+  context_file: company.yaml
+
+# ====================================================================
+# CRON TRIGGERS — recurring jobs
+# ====================================================================
+
+cron:
+  - name: weekly-voice-drift-audit
+    schedule: "0 9 * * MON"            # Monday 09:00 operator-local
+    skill: /voice-drift-detector
+    scope: all-active-clients
+    output_path: outputs/{date}/voice-drift/
+    on_violation: surface-to-operator-with-brief
+
+  - name: daily-content-engine-queue
+    schedule: "0 6 * * *"              # Daily 06:00
+    skill: /build-posting-calendar
+    scope: agency-plus-all-active-clients
+    action: queue-todays-posts-for-review
+    output_path: outputs/{date}/content-queue/
+
+  - name: weekly-pipeline-pulse
+    schedule: "0 8 * * MON"            # Monday 08:00
+    skill: /pipeline-pulse
+    scope: agency
+    action: report-conversion-rates-and-bottleneck-by-lens
+    output_path: outputs/{date}/pipeline/
+
+  - name: monthly-client-reports
+    schedule: "0 9 1 * *"              # 1st of month, 09:00
+    skill: /build-client-report
+    scope: all-active-clients
+    output_path: outputs/{date}/client-reports/
+
+  - name: weekly-program-cohort-pulse
+    schedule: "0 10 * * SUN"           # Sunday 10:00
+    skill: /program-cohort-pulse
+    scope: program
+    action: surface-at-risk-students-and-suggested-interventions
+    output_path: outputs/{date}/program-pulse/
+
+# ====================================================================
+# WEBHOOK TRIGGERS — inbound events from external systems
+# ====================================================================
+
+webhooks:
+  - name: lead-application-submitted
+    event: form.submitted
+    source: application-form
+    skill: /triage-application
+    output_path: outputs/{date}/applications/
+    auto_actions:
+      - if: dq_passed
+        action: send-booking-link
+      - if: hard_dq_tripped
+        action: surface-to-operator-with-brief
+      - if: borderline
+        action: queue-for-operator-review
+
+  - name: dm-reply-received
+    event: dm.replied
+    source: linkedin-or-tooling
+    skill: /classify-dm-intent
+    output_path: outputs/{date}/dm-classifications/
+    auto_actions:
+      - load-intent-class-sequence
+      - draft-next-message
+      - queue-for-operator-or-VA-send
+
+  - name: discovery-call-ended
+    event: call.ended
+    source: calendar-or-recording
+    skill: /summarize-discovery-call
+    output_path: outputs/{date}/calls/
+    auto_actions:
+      - transcribe-call
+      - extract-objections-into-objection-library
+      - draft-follow-up-DM
+      - draft-followup-email
+
+  - name: client-content-source-arrived
+    event: file.received OR voice-note.received
+    source: client-channel
+    skill: /process-client-source-material
+    output_path: outputs/{date}/client-sourcing/
+    auto_actions:
+      - extract-raw-material
+      - tag-by-pillar-and-post-type
+      - notify-ghostwriter
+
+  - name: client-rejected-post
+    event: artifact.rejected
+    source: client-channel
+    skill: /process-rejection-signal
+    output_path: outputs/{date}/rejection-feedback/
+    auto_actions:
+      - capture-rejection-reason
+      - update-client-voice-subprofile
+      - flag-if-drift-pattern-emerging
+
+# ====================================================================
+# EVENT TRIGGERS — internal workspace events
+# ====================================================================
+
+events:
+  - name: new-client-signed
+    trigger: case_studies.agency_case_studies.added
+    skill: /onboard-client
+    output_path: outputs/{date}/onboarding/
+    sequence:
+      - schedule-voice-extraction-interview
+      - schedule-icp-build-interview
+      - generate-onboarding-doc
+      - create-client-subprofile-stubs
+      - assign-account-manager-and-ghostwriter
+
+  - name: new-program-student-enrolled
+    trigger: case_studies.program_case_studies.added
+    skill: /onboard-program-student
+    output_path: outputs/{date}/program-onboarding/
+    sequence:
+      - send-week-1-curriculum
+      - schedule-first-mentorship-call
+      - add-to-community
+      - assign-cohort-buddy
+
+  - name: voice-drift-threshold-breached
+    trigger: voice-drift-detector.score-below-threshold
+    skill: /trigger-voice-recalibration
+    output_path: outputs/{date}/voice-recalibration/
+    sequence:
+      - generate-drift-brief
+      - schedule-recalibration-interview
+      - pause-ghostwriting-until-recalibrated
+
+  - name: ltv-cac-degraded
+    trigger: economics_validation.ltv_cac_ratio_dfy < 3.0
+    skill: /economics-investigation
+    output_path: outputs/{date}/economics/
+    sequence:
+      - diagnose-CAC-rise-OR-LTV-fall
+      - surface-fix-recommendation
+      - block-new-DFY-acquisition-until-resolved
+
+  - name: case-study-cleared-for-use
+    trigger: case_studies.agency_case_studies.use_in_sales == true
+    skill: /promote-case-study
+    output_path: outputs/{date}/case-study-promotion/
+    sequence:
+      - generate-LinkedIn-post-variants
+      - generate-DM-variants
+      - generate-sales-page-block
+      - update-proof-asset-inventory
+
+# ====================================================================
+# AGENT BINDINGS — per-skill agent persona overlay
+# ====================================================================
+
+agent_bindings:
+  - skill: /extract-founder-voice
+    agent: voice-extractor
+  - skill: /build-icp
+    agent: icp-builder
+  - skill: /design-retainer-offer
+    agent: offer-architect
+  - skill: /design-program-offer
+    agent: offer-architect
+  - skill: /build-content-engine
+    agent: content-strategist
+  - skill: /write-linkedin-post
+    agent: linkedin-ghostwriter
+  - skill: /ghostwrite-client-post
+    agent: linkedin-ghostwriter
+  - skill: /build-outbound-engine
+    agent: dm-strategist
+  - skill: /write-dm-sequence
+    agent: dm-strategist
+  - skill: /classify-dm-intent
+    agent: dm-strategist
+  - skill: /source-lead-list
+    agent: lead-list-builder
+  - skill: /build-call-prep
+    agent: call-prep-specialist
+  - skill: /summarize-discovery-call
+    agent: call-prep-specialist
+  - skill: /build-application
+    agent: acquisition-head
+  - skill: /triage-application
+    agent: acquisition-head
+  - skill: /onboard-client
+    agent: account-manager
+  - skill: /build-client-report
+    agent: client-reporter
+  - skill: /voice-drift-detector
+    agent: account-manager
+  - skill: /onboard-program-student
+    agent: program-mentor
+  - skill: /pipeline-pulse
+    agent: agency-director
+  - skill: /program-cohort-pulse
+    agent: program-head
+
+# ====================================================================
+# QUALITY GATES — workspace-level
+# ====================================================================
+
+quality_gates:
+  signal_quality:
+    client_bound_minimum: 0.80
+    program_bound_minimum: 0.80
+    agency_bound_minimum: 0.65
+    internal_only_minimum: 0.50
+
+  blind_output_test:
+    required_for: [client_bound, program_bound]
+    pass_criterion: at-least-2-of-3-simulated-reviewers-mark-as-human-operator
+    spec_path: spec/BLIND-OUTPUT-TEST.md
+
+  context_thresholds:
+    spec_path: spec/CONTEXT-THRESHOLDS.md
+    enforce: hard-block-if-below-threshold
+
+  banned_vocabulary:
+    spec_path: spec/BANNED-VOCABULARY.md
+    enforce: hard-block-if-detected
+
+  voice_drift:
+    cadence: weekly
+    per_client: true
+    threshold_field: brand_voice.client_voices[*].voice_drift_threshold
+    default_threshold: 0.82

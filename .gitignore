@@ -1,0 +1,47 @@
+# Operator-specific overlays — never commit
+company.local.yaml
+*.local.yaml
+.env
+.env.local
+.env.*.local
+
+# Per-operator + per-client encoded private data (auto-created on first use)
+_private/*
+!_private/.gitkeep
+
+# Outputs — workspace-generated artifacts
+outputs/*
+!outputs/.gitkeep
+
+# Drafts in progress
+drafts/
+*.draft.md
+
+# Cached Notion pulls / external source dumps
+cache/
+*.cache
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editor
+.vscode/
+.idea/
+*.iml
+
+# Logs
+*.log
+logs/
+
+# Client-specific working files (recursive context populated at runtime)
+clients/*/raw-source/
+clients/*/transcripts/
+clients/*/screenshots/
+
+# Tool-specific exports
+*.linkedin-export.csv
+*.salesnav-export.csv
+*.crm-export.csv

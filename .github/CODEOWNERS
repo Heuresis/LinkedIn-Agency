@@ -1,0 +1,19 @@
+# LinkedIn Marketing Agency — CODEOWNERS
+#
+# Any PR that touches these paths requests review from the Heuresis team.
+# Rules cascade top-to-bottom; the last matching rule wins.
+
+# Default — Heuresis team reviews everything
+*                                   @Heuresis/core
+
+# Load-bearing files — principal architect review required
+/SYSTEM.md                          @Heuresis/core
+/INVARIANTS.md                      @Heuresis/core
+/ENCODING.md                        @Heuresis/core
+/LICENSE                            @Heuresis/core
+
+# Spec — any change cascades through every skill
+/spec/                              @Heuresis/core
+
+# Repo hygiene
+/.github/                           @Heuresis/core
