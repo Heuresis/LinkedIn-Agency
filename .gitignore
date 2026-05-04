@@ -45,3 +45,6 @@ clients/*/screenshots/
 *.linkedin-export.csv
 *.salesnav-export.csv
 *.crm-export.csv
+
+# ---- Convert build artifacts ----
+build/
