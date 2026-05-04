@@ -102,6 +102,33 @@ Full setup walkthrough: **[Quickstart](docs/QUICKSTART.md)** · 30 minutes.
 
 ---
 
+## How it fits together
+
+Every Heuresis workspace is the same shape. A boot layer reads your agency context, then activates the org-chart, skill outputs, methodology brain, and trigger manifest. Eleven runtime integrations ship — see [Multi-tool integrations](#multi-tool-integrations).
+
+```text
+┌──────────────────────────────────────────────────────────────┐
+│                    THE ENCODED WORKSPACE                     │
+│                                                              │
+│  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────┐  │
+│  │ SYSTEM.md │  │ ENCODING  │  │ INVARIANTS│  │  company  │  │
+│  │ boot file │  │  schema   │  │   rules   │  │  context  │  │
+│  └───────────┘  └───────────┘  └───────────┘  └───────────┘  │
+│                                                              │
+│  ┌───────────┐  ┌───────────┐  ┌───────────┐  ┌───────────┐  │
+│  │  agents/  │  │  skills/  │  │ reference/│  │  triggers │  │
+│  │ org chart │  │  outputs  │  │   brain   │  │  manifest │  │
+│  └───────────┘  └───────────┘  └───────────┘  └───────────┘  │
+└──────────────────────────────────────────────────────────────┘
+                            │
+                            ▼
+        any agent runtime that reads files — 11 ship
+```
+
+<br/>
+
+---
+
 ## What's inside the folder
 
 ```text
@@ -269,6 +296,25 @@ Runtime-swappable. Your workspace is the asset. The runtime is replaceable.
 
 ---
 
+## Capabilities
+
+What every Heuresis workspace ships with, regardless of which runtime you point at it.
+
+| Property | What it does |
+|---|---|
+| **Plain-text workspace** | Every agent, skill, and framework is markdown + YAML. Read it, fork it, version it, diff it. |
+| **Runtime-portable** | The same files run across every major agentic tool. Eleven integrations ship — see [Multi-tool integrations](#multi-tool-integrations). |
+| **Goal ancestry** | Every skill carries the agency's positioning, ICP, offer, and ghostwriting voice as live context. Agents act on the *why*, not just the *what*. |
+| **Encoded judgement** | Agents carry the operator's voice extraction, qualification bar, and ghostwriting standards. The workspace replicates the operator's judgement, not their task list. |
+| **Receipt trail** | Every cycle leaves an artefact — a post, a DM thread, an application score, a voice-drift report. Auditable end-to-end. |
+| **Compounding library** | Wins, hook patterns, objection captures, and per-client benchmarks feed back into the workspace. Every cycle sharpens the next. |
+| **Trigger-ready** | Cron, webhook, and event triggers declared in a manifest. Wire to any scheduler — daily client posts, weekly voice-drift audits, inbound DM routing — and the workspace operates while you sleep. |
+| **Owned outright** | MIT-licensed. Fork it, host it, run it forever. Yours. |
+
+<br/>
+
+---
+
 ## Why this matters
 
 Every founder-led LinkedIn agency hits the same wall: the founder IS every department.
@@ -280,6 +326,25 @@ Encoding changes the shape of the week. Your judgement — voice extraction, ICP
 Every cycle, each department gets sharper. The gap between your agency and every competitor operating off memory widens.
 
 This is one template in the library. More shipping, vertical by vertical. Every outcome claim we publish traces to a real deployment with a real operator. Thesis, method, and source go public on ideas. Receipts wait their turn.
+
+<br/>
+
+---
+
+## Roadmap
+
+- ✅ 5 departments · 32 agents · 30 skills shipped
+- ✅ Voice extraction · DM intent taxonomy · application gate
+- ✅ Voice-drift detection (weekly per-client audit)
+- ✅ Vertical adaptations: SaaS · services · e-com · info-product
+- ✅ Eleven runtime integrations: Claude Code · Copilot · Gemini · Cursor · Aider · Windsurf · OpenClaw · Qwen · Kimi · OpenCode · Antigravity
+- ✅ Trigger manifest: cron · webhook · event
+- ⚪ Multi-client voice library + drift telemetry dashboard
+- ⚪ Inbound classifier auto-routing to setter agents
+- ⚪ Per-client KPI dashboards
+- ⚪ Cohort-aware program operations
+- ⚪ Outbound lead-source benchmarking
+- ⚪ Heuresis Cloud — managed hosting for the workspace
 
 <br/>
 
