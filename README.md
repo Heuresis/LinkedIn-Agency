@@ -14,8 +14,8 @@
 <p><strong>Your B2B LinkedIn agency, encoded.</strong></p>
 
 <p>
-  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.0.0-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="Version"></a>
-  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="License"></a>
+  <a href="CHANGELOG.md"><img src="https://img.shields.io/badge/version-1.1.0-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-Heuresis_Source-09090b?style=flat-square&labelColor=09090b&color=52525b" alt="License"></a>
   <a href="https://heuresis.ai"><img src="https://img.shields.io/badge/a-Heuresis%20workspace-b45309?style=flat-square&labelColor=09090b&color=b45309" alt="Heuresis"></a>
 </p>
 
@@ -309,7 +309,7 @@ What every Heuresis workspace ships with, regardless of which runtime you point 
 | **Receipt trail** | Every cycle leaves an artefact — a post, a DM thread, an application score, a voice-drift report. Auditable end-to-end. |
 | **Compounding library** | Wins, hook patterns, objection captures, and per-client benchmarks feed back into the workspace. Every cycle sharpens the next. |
 | **Trigger-ready** | Cron, webhook, and event triggers declared in a manifest. Wire to any scheduler — daily client posts, weekly voice-drift audits, inbound DM routing — and the workspace operates while you sleep. |
-| **Owned outright** | MIT-licensed. Fork it, host it, run it forever. Yours. |
+| **Yours to run** | Source-available. Solo operators run it free, forever. Companies and client work: [Syed@heuresis.ai](mailto:Syed@heuresis.ai). |
 
 <br/>
 
@@ -358,6 +358,8 @@ This is one template in the library. More shipping, vertical by vertical. Every 
 
 ## License
 
-MIT. Free forever.
+**Heuresis Source License 1.0** — see [LICENSE](LICENSE).
+
+Solo developers, passion projects, testing, learning: free. Company use, client deployments, or anything sold: email [Syed@heuresis.ai](mailto:Syed@heuresis.ai) first. Marketing it is welcome — link this repository; it is the sole distribution point. No copies, no rebrands, no resale. Violations get DMCA takedowns and platform copyright complaints.
 
 Built by [Syed Hussain](https://heuresis.ai) at [Heuresis](https://heuresis.ai).
