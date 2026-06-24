@@ -6,8 +6,7 @@
   <img alt="Heuresis" src="docs/assets/heuresis-logo-light.png" width="220">
 </picture>
 
-<br/>
-<br/>
+<br/><br/>
 
 <h1>LinkedIn Agency</h1>
 
@@ -27,84 +26,23 @@
 
 <p align="center"><em>Your LinkedIn agency, in one folder.</em></p>
 
-<br/>
-
 ---
 
 ## What is this?
 
-Think of it like this: a B2B LinkedIn agency has departments — voice extraction, content engine, outbound DMs, fulfillment, and a high-ticket program for the founders who outgrow the retainer. Each one has standards, scripts, and instincts the founder carries in their head.
+A B2B LinkedIn agency has departments — voice, content, outbound DMs, fulfillment, and a high-ticket program for clients who outgrow the retainer. **LinkedIn Agency is that whole org chart, written down as a folder of plain files** any AI can read and run.
 
-**LinkedIn Agency is that whole org chart, written down as a folder of plain markdown files.**
+## How do I use it?
 
-Open the folder. Hand it to any AI agent — Claude, ChatGPT, Cursor, OpenClaw. The agent reads `SYSTEM.md`, learns your agency, learns your client, and starts running a department.
+Hand this repo to your AI agent — Claude, ChatGPT, Cursor, whatever you use — and tell it to set itself up. Then just talk to it. It learns your agency and your client and guides you from there: ask it to extract a client's voice, write a week of posts, or run the daily DM pipeline.
 
-You stay in the loop where your judgement counts. Voice drift gets caught the week it starts, not the month after a client churns.
-
-| Step | What happens |
-|---|---|
-| **01** | Clone the folder |
-| **02** | Fill in `company.yaml` with your agency — voice patterns, ICP, retainer offer, program offer |
-| **03** | Hand the folder to any agent. It reads `SYSTEM.md`, becomes a LinkedIn agency operator, and starts shipping |
-
-<br/>
-
----
-
-## Without this · With this
-
-| Without | With |
-|---|---|
-| The ghostwriter quits at month 6. Client posts go off-voice for two weeks before anyone notices. | Voice is encoded per client. Every post passes a drift check before it ships. |
-| The DM operator drifts off-script by month 3. Inbound replies get classified by gut feel. | A 4-class intent taxonomy routes every reply. Booking-gate qualification runs every day. |
-| Client-of-the-month posts read like last month's client. | Every client has their own voice profile, their own hook library, their own posting calendar. |
-| You spend Sundays writing your own LinkedIn while writing your clients' too. | Your founder posts and your client posts are different files. Both stay in your voice. |
-| The high-ticket program runs on Slack, Notion, three Loom videos, and hope. | Curriculum, cohort cadence, first-win triggers, and retention pulses live in the same workspace. |
-
-<br/>
-
----
-
-## Try it
-
-```bash
-git clone https://github.com/Heuresis/LinkedIn-Agency.git your-agency
-cd your-agency
-./boot.sh
-```
-
-Boot prints the workspace credentials and runtime install options. Then
-install into your runtime of choice:
-
-```bash
-./scripts/install.sh --tool claude-code
-```
-
-Eleven runtimes supported. See [Multi-tool integrations](#multi-tool-integrations).
-
-Fill in `company.yaml` with your agency context. Then ask for what you need:
-
-```
-/extract-founder-voice         a voice profile (yours or a client's)
-/build-icp                     an ideal customer profile
-/design-retainer-offer         a DFY service offer document
-/design-program-offer          a high-ticket program offer document
-/build-content-engine          pillars, hook library, calendar
-/build-outbound-engine         DM intent taxonomy + per-class sequences
-/ghostwrite-client-post        a client-bound post (with voice-drift check)
-/run-client-dm-ops             a daily client DM operations cycle
-/voice-drift-detector          a weekly per-client voice audit
-```
-
-Full setup walkthrough: **[Quickstart](docs/QUICKSTART.md)** · 30 minutes.
-
-<br/>
+No setup ceremony. You talk, it works.
 
 ---
 
 ## How it fits together
 
-Every Heuresis workspace is the same shape. A boot layer reads your agency context, then activates the org-chart, skill outputs, methodology brain, and trigger manifest. Eleven runtime integrations ship — see [Multi-tool integrations](#multi-tool-integrations).
+Every Heuresis workspace is the same shape — a boot layer reads your agency context, then runs the org chart, the skills, the reference brain, and the trigger manifest.
 
 ```text
 ┌──────────────────────────────────────────────────────────────┐
@@ -137,7 +75,7 @@ linkedin-agency/
 ├── README.md            ←  the pitch
 ├── SYSTEM.md            ←  boot file · any AI becomes a LinkedIn agency operator
 ├── INVARIANTS.md        ←  14 NEVERs + 14 ALWAYSes (sacred rules)
-├── ENCODING.md          ←  6-profile schema (recursive: agency + per-client)
+├── ENCODING.md          ←  6-profile schema (agency + per-client)
 ├── company.yaml         ←  YOUR agency · fill once
 │
 ├── agents/              ←  32 specialists · an org chart of a real agency
@@ -193,13 +131,13 @@ linkedin-agency/
 │   └── /build-retention-pulse       Retention check (program-side)
 │
 └── reference/           ←  the brain that makes skills smart
-    ├── frameworks/             ICP, voice, content, DM, offer, fulfillment frameworks
-    ├── operators/              Anonymized archetype playbooks
-    ├── platforms/              LinkedIn, X, IG, YouTube, email playbooks
-    ├── playbooks/              Multi-step playbook (24-month arc)
-    ├── swipe-file/             Annotated high-performer LinkedIn posts
-    ├── templates/              Output templates (proposal, onboarding, report)
-    └── verticals/              Vertical adaptations (SaaS, services, e-com, info-product)
+    ├── frameworks/             ICP · voice · content · DM · offer · fulfillment frameworks
+    ├── operators/              anonymized archetype playbooks
+    ├── platforms/              LinkedIn · X · IG · YouTube · email playbooks
+    ├── playbooks/              multi-step playbook (24-month arc)
+    ├── swipe-file/             annotated high-performer LinkedIn posts
+    ├── templates/              output templates (proposal · onboarding · report)
+    └── verticals/              vertical adaptations (SaaS · services · e-com · info-product)
 ```
 
 Each file is plain text. Each folder is owned by you. Nothing is locked behind an app.
@@ -211,16 +149,16 @@ Each file is plain text. Each folder is owned by you. Nothing is locked behind a
 ## Each client ships with
 
 - **Voice profile** — extracted in week 1, ship-grade
-- **ICP** — per-client with verbatim voice-of-customer language
+- **ICP** — per-client, in verbatim voice-of-customer language
 - **Content engine** — pillars, hook library, posting calendar
 - **DM engine** — 4-class intent taxonomy, per-intent sequences, booking-gate qualification
 - **Lead list** — ICP-precise, intent-scored, prioritized
-- **Discovery call prep** — research-deep, objection pre-framed
-- **Retainer proposal** — transformation hypothesis, named mechanism, value stack
+- **Discovery call prep** — research-deep, objections pre-framed
+- **Retainer proposal** — named mechanism, value stack
 - **Monthly report** — signal-dense, attribution-clean
-- **Voice-drift audit** — weekly per client
+- **Voice-drift audit** — weekly, per client
 
-Every action leaves a receipt. Every post passes the drift check. Every client retains a profile that gets sharper every cycle.
+Every post passes the drift check. Every client's profile gets sharper each cycle.
 
 <br/>
 
@@ -228,15 +166,7 @@ Every action leaves a receipt. Every post passes the drift check. Every client r
 
 ## Runs while you sleep
 
-Wire the workspace into a runtime with **cron, webhook, and event triggers**. The agents keep working without you in the room.
-
-- **Monday 09:00 (cron)** — `voice-drift-detector` runs across every active client
-- **On `lead.applied` (webhook)** — application response triaged, DQ logic runs, qualified leads booked
-- **On `call.ended` (event)** — call recording transcribed, summary generated, follow-up DM drafted, CRM updated
-- **Daily 06:00 (cron)** — content engine queues today's agency post + today's per-client posts
-- **Continuous (event)** — DM ops run intent classification on inbound replies, route to the right sequence
-
-Triggers are declared in [`paperclip.manifest.yaml`](paperclip.manifest.yaml). Wire them to your scheduler and the workspace operates as a 24/7 LinkedIn agency.
+Wire the workspace to a scheduler and the agents keep working without you in the room — queuing each client's posts every morning, routing inbound DMs to the right sequence, and running a voice-drift check across every client each week. Triggers live in [`paperclip.manifest.yaml`](paperclip.manifest.yaml).
 
 <br/>
 
@@ -244,15 +174,13 @@ Triggers are declared in [`paperclip.manifest.yaml`](paperclip.manifest.yaml). W
 
 ## What you get
 
-**5 agent-first departments. 32 agents. 30 skills.**
+Five departments, ready to run:
 
 - **Foundations** — voice extraction · ICP build · positioning · offer architecture
-- **Marketing** — content engine · hook library · per-client ghostwriting · cross-platform repurposing
+- **Marketing** — content engine · hook library · per-client ghostwriting · repurposing
 - **Acquisition** — outbound DM engine · 4-class intent taxonomy · application gate · call prep · closing · follow-up
 - **Fulfillment** — account management · ghostwriting protocol · client DM ops · lead-list sourcing · monthly reporting · voice-drift detection
 - **Program** — curriculum design · mentorship cadence · community rituals · first-win engineering · retention pulse
-
-Each department is a full department rebuilt as agent-first — agents that carry your judgement, read signals, and make decisions.
 
 <br/>
 
@@ -260,91 +188,23 @@ Each department is a full department rebuilt as agent-first — agents that carr
 
 ## Multi-tool integrations
 
-The workspace is files. Files run anywhere that reads files. The Agency
-ships conversion + install scripts so the same agents work across every
-major agentic coding tool — no vendor lock, no rewrite.
+It's just files, so it runs in any major AI tool — no lock-in, no rewrite.
 
-| Tool | Install | Destination |
-|---|---|---|
-| **Claude Code** | `./scripts/install.sh --tool claude-code` | `~/.claude/agents/heuresis-linkedin-agency/` |
-| **GitHub Copilot** | `./scripts/install.sh --tool copilot` | `~/.github/agents/` + `~/.copilot/agents/` |
-| **Antigravity (Gemini)** | `./scripts/install.sh --tool antigravity` | `~/.gemini/antigravity/skills/` |
-| **Gemini CLI** | `./scripts/install.sh --tool gemini-cli` | `~/.gemini/extensions/heuresis-linkedin-agency/` |
-| **OpenCode** | `./scripts/install.sh --tool opencode` | `./.opencode/agents/` |
-| **Cursor** | `./scripts/install.sh --tool cursor` | `./.cursor/rules/` |
-| **Aider** | `./scripts/install.sh --tool aider` | `./CONVENTIONS.md` |
-| **Windsurf** | `./scripts/install.sh --tool windsurf` | `./.windsurfrules` |
-| **OpenClaw** | `./scripts/install.sh --tool openclaw` | `~/.openclaw/heuresis-linkedin-agency/` |
-| **Qwen Code** | `./scripts/install.sh --tool qwen` | `./.qwen/agents/` |
-| **Kimi Code** | `./scripts/install.sh --tool kimi` | `~/.config/kimi/agents/` |
-
-Five tools (Antigravity, Gemini CLI, OpenClaw, Cursor, Kimi) require format
-conversion — the install script handles it transparently. To inspect the
-converted artifacts before deploying:
-
-```bash
-./scripts/convert.sh --tool <tool-name>
-ls build/<tool-name>/
-```
-
-Every tool has its own README with activation patterns, customization notes,
-and uninstall steps. Full list: **[integrations/README.md](integrations/README.md)**.
-
-Runtime-swappable. Your workspace is the asset. The runtime is replaceable.
-
-<br/>
-
----
-
-## Capabilities
-
-What every Heuresis workspace ships with, regardless of which runtime you point at it.
-
-| Property | What it does |
+| Tool | Install |
 |---|---|
-| **Plain-text workspace** | Every agent, skill, and framework is markdown + YAML. Read it, fork it, version it, diff it. |
-| **Runtime-portable** | The same files run across every major agentic tool. Eleven integrations ship — see [Multi-tool integrations](#multi-tool-integrations). |
-| **Goal ancestry** | Every skill carries the agency's positioning, ICP, offer, and ghostwriting voice as live context. Agents act on the *why*, not just the *what*. |
-| **Encoded judgement** | Agents carry the operator's voice extraction, qualification bar, and ghostwriting standards. The workspace replicates the operator's judgement, not their task list. |
-| **Receipt trail** | Every cycle leaves an artefact — a post, a DM thread, an application score, a voice-drift report. Auditable end-to-end. |
-| **Compounding library** | Wins, hook patterns, objection captures, and per-client benchmarks feed back into the workspace. Every cycle sharpens the next. |
-| **Trigger-ready** | Cron, webhook, and event triggers declared in a manifest. Wire to any scheduler — daily client posts, weekly voice-drift audits, inbound DM routing — and the workspace operates while you sleep. |
-| **Yours to run** | Source-available. Solo operators run it free, forever. Companies and client work: [Syed@heuresis.ai](mailto:Syed@heuresis.ai). |
+| **Claude Code** | `./scripts/install.sh --tool claude-code` |
+| **GitHub Copilot** | `./scripts/install.sh --tool copilot` |
+| **Antigravity (Gemini)** | `./scripts/install.sh --tool antigravity` |
+| **Gemini CLI** | `./scripts/install.sh --tool gemini-cli` |
+| **OpenCode** | `./scripts/install.sh --tool opencode` |
+| **Cursor** | `./scripts/install.sh --tool cursor` |
+| **Aider** | `./scripts/install.sh --tool aider` |
+| **Windsurf** | `./scripts/install.sh --tool windsurf` |
+| **OpenClaw** | `./scripts/install.sh --tool openclaw` |
+| **Qwen Code** | `./scripts/install.sh --tool qwen` |
+| **Kimi Code** | `./scripts/install.sh --tool kimi` |
 
-<br/>
-
----
-
-## Why this matters
-
-Every founder-led LinkedIn agency hits the same wall: the founder IS every department.
-
-The ghostwriter quits at month 6. The DM operator drifts off-script by month 3. Client-of-the-month posts read like last month's client. The high-ticket program runs on Slack, Notion, three Loom videos, and hope.
-
-Encoding changes the shape of the week. Your judgement — voice extraction, ICP build, DM intent classification, ghostwriting standards — gets written into agents that run each department on your behalf. The founder stays. The judgement scales. The agency compounds.
-
-Every cycle, each department gets sharper. The gap between your agency and every competitor operating off memory widens.
-
-This is one template in the library. More shipping, vertical by vertical. Every outcome claim we publish traces to a real deployment with a real operator. Thesis, method, and source go public on ideas. Receipts wait their turn.
-
-<br/>
-
----
-
-## Roadmap
-
-- ✅ 5 departments · 32 agents · 30 skills shipped
-- ✅ Voice extraction · DM intent taxonomy · application gate
-- ✅ Voice-drift detection (weekly per-client audit)
-- ✅ Vertical adaptations: SaaS · services · e-com · info-product
-- ✅ Eleven runtime integrations: Claude Code · Copilot · Gemini · Cursor · Aider · Windsurf · OpenClaw · Qwen · Kimi · OpenCode · Antigravity
-- ✅ Trigger manifest: cron · webhook · event
-- ⚪ Multi-client voice library + drift telemetry dashboard
-- ⚪ Inbound classifier auto-routing to setter agents
-- ⚪ Per-client KPI dashboards
-- ⚪ Cohort-aware program operations
-- ⚪ Outbound lead-source benchmarking
-- ⚪ Heuresis Cloud — managed hosting for the workspace
+Full details per tool: **[integrations/README.md](integrations/README.md)**.
 
 <br/>
 
@@ -358,8 +218,6 @@ This is one template in the library. More shipping, vertical by vertical. Every 
 
 ## License
 
-**Heuresis Source License 1.0** — see [LICENSE](LICENSE).
-
-Solo developers, passion projects, testing, learning: free. Company use, client deployments, or anything sold: email [Syed@heuresis.ai](mailto:Syed@heuresis.ai) first. Marketing it is welcome — link this repository; it is the sole distribution point. No copies, no rebrands, no resale. Violations get DMCA takedowns and platform copyright complaints.
+**Heuresis Source License 1.0** — see [LICENSE](LICENSE). Free for solo developers, learning, and testing. Company use, client work, or anything resold: email [Syed@heuresis.ai](mailto:Syed@heuresis.ai) first.
 
 Built by [Syed Hussain](https://heuresis.ai) at [Heuresis](https://heuresis.ai).
